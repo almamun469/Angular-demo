@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { OneService } from './one.service';
+import { TwoService } from './two.service';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +12,14 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'frontend';
+  constructor(private twoService: TwoService) {}
+
+  sendData() {
+    this.twoService.updateData('Hello from AppComponent');
+  }
+
+  receiveData() {
+    const data = this.twoService.fetchData();
+    
+  }
 }
